@@ -298,8 +298,8 @@ function setting(){
     var msg = {
         "messageType": "SETTING",
         "options": {
-            "height": 500,
-			"width": 500,
+            "height": 504,
+			"width": 504,
         }
     };
 
