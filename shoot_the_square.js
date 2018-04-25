@@ -319,7 +319,13 @@ document.getElementById('save').onclick = function() { save() };
 document.getElementById('load').onclick = function() { load() };
 
 //Check for load request
-
+window.addEventListener("message", function(evt){
+    if (evt.data.messageType == "LOAD"){
+        var savedScore = evt.data.gameState.score;
+        document.getElementById("score").innerHTML = 'SCORE: ' + savedScore;
+        score = savedScore;
+    }
+});
 
 setting();
 loop();
