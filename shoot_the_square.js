@@ -320,7 +320,7 @@ document.getElementById('load').onclick = function() { load() };
 
 //Check for load request
 $(document).ready(function () {
-	document.addEventListener("message", function(evt){
+	window.addEventListener("message", function(evt) {
 		if (evt.data.messageType == "LOAD"){
 		    var savedScore = evt.data.gameState.score;
 		    document.getElementById("score").innerHTML = 'SCORE: ' + savedScore;
