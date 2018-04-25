@@ -189,8 +189,16 @@ function save(){
 			"score": score
 		}
 	};
-
     window.parent.postMessage(msg, "*");
+
+    var elementLoaded = document.getElementById('loaded');
+    elementLoaded.style.visibility = "hidden";
+
+    var elementSaved = document.getElementById('saved');
+    elementSaved.style.visibility = "visible";
+    setTimeout(function() {
+        elementSaved.style.visibility = "hidden";
+    }, 2000);
 }
 
 //Load the score
@@ -198,8 +206,16 @@ function load(){
     var msg = {
         "messageType": "LOAD",
     };
-
     window.parent.postMessage(msg, "*");
+
+	var elementLoaded = document.getElementById('saved');
+    elementLoaded.style.visibility = "hidden";
+
+    var elementLoaded = document.getElementById('loaded');
+    elementLoaded.style.visibility = "visible";
+    setTimeout(function() {
+        elementLoaded.style.visibility = "hidden";
+    }, 2000);
 }
 
 //Send the score after game over
