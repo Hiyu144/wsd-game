@@ -182,7 +182,9 @@ function gameOver() {
 }
 
 //Save the score
+var savedScore = 0;
 function save(){
+	savedScore = score;
     var msg = {
         "messageType": "SAVE",
         "gameState": {
@@ -190,32 +192,12 @@ function save(){
 		}
 	};
     window.parent.postMessage(msg, "*");
-
-    var elementLoaded = document.getElementById('loaded');
-    elementLoaded.style.visibility = "hidden";
-
-    var elementSaved = document.getElementById('saved');
-    elementSaved.style.visibility = "visible";
-    setTimeout(function() {
-        elementSaved.style.visibility = "hidden";
-    }, 2000);
 }
 
 //Load the score
 function load(){
-    var msg = {
-        "messageType": "LOAD",
-    };
-    window.parent.postMessage(msg, "*");
-
-	var elementLoaded = document.getElementById('saved');
-    elementLoaded.style.visibility = "hidden";
-
-    var elementLoaded = document.getElementById('loaded');
-    elementLoaded.style.visibility = "visible";
-    setTimeout(function() {
-        elementLoaded.style.visibility = "hidden";
-    }, 2000);
+	document.getElementById("score").innerHTML = 'SCORE: ' + savedScore;
+	score = savedScore;
 }
 
 //Send the score after game over
@@ -335,13 +317,13 @@ document.getElementById('save').onclick = function() { save() };
 document.getElementById('load').onclick = function() { load() };
 
 //Check for load request
-document.addEventListener("message", function(evt){
-    if (evt.data.messageType == "LOAD"){
-        var savedScore = evt.data.gameState.score;
-        document.getElementById("score").innerHTML = 'SCORE: ' + savedScore;
-        score = savedScore;
-    }
-});
+//document.addEventListener("message", function(evt){
+//    if (evt.data.messageType == "LOAD"){
+//        var savedScore = evt.data.gameState.score;
+//        document.getElementById("score").innerHTML = 'SCORE: ' + savedScore;
+//        score = savedScore;
+//    }
+//});
 
 setting();
 loop();
