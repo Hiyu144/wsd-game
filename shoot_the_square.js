@@ -293,6 +293,19 @@ function getRandom(maxSize) {
     return parseInt(Math.random() * maxSize);
 }
 
+//Send windows height and width
+function setting(){
+    var msg = {
+        "messageType": "SETTING",
+        "options": {
+            "height": 500,
+			"width": 500,
+        }
+    };
+
+    window.parent.postMessage(msg, "*");
+}
+
 //Main function loop
 function loop() {
     if (new Date().getTime() - lastLoopRun > 40) {
@@ -331,5 +344,6 @@ document.addEventListener("message", function(evt){
     }
 });
 
+setting();
 loop();
 
