@@ -185,7 +185,9 @@ function gameOver() {
 function save(){
     var msg = {
         "messageType": "SAVE",
-        "score": score,        
+        "gameState": {
+            "score": score,
+        }
     };
 
     var elementLoaded = document.getElementById('loaded');
