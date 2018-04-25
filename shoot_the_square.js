@@ -183,12 +183,9 @@ function gameOver() {
 
 //Save the score
 function save(){
-    var msg = {
-        "messageType": "SAVE",
-        "gameState": {
-            "score": score,
-        }
-    };
+    var msg = {};
+    msg.messageType = "SAVE";
+	msg.gameState.score = score;
 
     var elementLoaded = document.getElementById('loaded');
     elementLoaded.style.visibility = "hidden";
