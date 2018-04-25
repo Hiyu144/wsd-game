@@ -183,18 +183,12 @@ function gameOver() {
 
 //Save the score
 function save(){
-    var msg = {};
-    msg.messageType = "SAVE";
-	msg.gameState.score = score;
-
-    var elementLoaded = document.getElementById('loaded');
-    elementLoaded.style.visibility = "hidden";
-
-    var elementSaved = document.getElementById('saved');
-    elementSaved.style.visibility = "visible";
-    setTimeout(function() {
-        elementSaved.style.visibility = "hidden";
-    }, 2000);
+    var msg = {
+        "messageType": "SAVE",
+        "gameState": {
+			"score": score
+		}
+	};
 
     window.parent.postMessage(msg, "*");
 }
@@ -204,15 +198,6 @@ function load(){
     var msg = {
         "messageType": "LOAD",
     };
-
-	var elementLoaded = document.getElementById('saved');
-    elementLoaded.style.visibility = "hidden";
-
-    var elementLoaded = document.getElementById('loaded');
-    elementLoaded.style.visibility = "visible";
-    setTimeout(function() {
-        elementLoaded.style.visibility = "hidden";
-    }, 2000);
 
     window.parent.postMessage(msg, "*");
 }
