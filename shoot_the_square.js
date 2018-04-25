@@ -172,6 +172,11 @@ function gameOver() {
     element = document.getElementById('gameover');
     element.style.visibility = 'visible';
 
+	element = document.getElementById('save');
+    element.style.visibility = 'hidden';
+	element = document.getElementById('load');
+    element.style.visibility = 'hidden';
+
     var elementScore = document.getElementById('highscore');
     elementScore.style.visibility = 'visible';
     elementScore.onclick = function() { sendScore() };
