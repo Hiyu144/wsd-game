@@ -320,8 +320,6 @@ function loop() {
         lastLoopRun = new Date().getTime();
         iterations++;
 		
-		document.getElementById('save').onclick = function() { save() };
-		document.getElementById('load').onclick = function() { load() };
     }
     setTimeout('loop();', 2);
 }
@@ -334,6 +332,9 @@ document.onkeydown = function(evt) {
 document.onkeyup = function(evt) {
     toggleKey(evt.keyCode, false);
 };
+
+document.getElementById('save').onclick = function() { save() };
+document.getElementById('load').onclick = function() { load() };
 
 //Check for load request
 document.addEventListener("message", function(evt){
