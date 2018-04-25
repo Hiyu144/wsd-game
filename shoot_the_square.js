@@ -196,8 +196,10 @@ function save(){
 
 //Load the score
 function load(){
-	document.getElementById("score").innerHTML = 'SCORE: ' + savedScore;
-	score = savedScore;
+	var msg = {
+        "messageType": "LOAD_REQUEST"
+    };
+    window.parent.postMessage(msg, "*");
 }
 
 //Send the score after game over
@@ -317,13 +319,13 @@ document.getElementById('save').onclick = function() { save() };
 document.getElementById('load').onclick = function() { load() };
 
 //Check for load request
-//document.addEventListener("message", function(evt){
-//    if (evt.data.messageType == "LOAD"){
-//        var savedScore = evt.data.gameState.score;
-//        document.getElementById("score").innerHTML = 'SCORE: ' + savedScore;
-//        score = savedScore;
-//    }
-//});
+document.addEventListener("message", function(evt){
+    if (evt.data.messageType == "LOAD"){
+        var savedScore = evt.data.gameState.score;
+        document.getElementById("score").innerHTML = 'SCORE: ' + savedScore;
+        score = savedScore;
+    }
+});
 
 setting();
 loop();
