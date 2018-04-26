@@ -43,7 +43,7 @@
     cursor: pointer;
 }
 
-#saved, #loaded {
+#info {
     color: #ffffff;
     font-size: 18pt;
     position: absolute;

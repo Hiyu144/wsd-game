@@ -196,6 +196,7 @@ function save(){
 			"score": score
 		}
 	};
+	
     window.parent.postMessage(msg, "*");
 }
 
@@ -330,6 +331,11 @@ window.addEventListener("message", function(evt){
         document.getElementById("score").innerHTML = 'SCORE: ' + savedScore;
         score = savedScore;
     }
+	
+	if (evt.data.messageType == "ERROR"){
+		var info = evt.data.info;
+		document.getElementById("info").innerHTML = info;
+	}
 });
 
 setting();
