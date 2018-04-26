@@ -196,7 +196,6 @@ function save(){
 			"score": score
 		}
 	};
-	
     window.parent.postMessage(msg, "*");
 }
 
@@ -334,7 +333,10 @@ window.addEventListener("message", function(evt){
 	
 	if (evt.data.messageType == "ERROR"){
 		var info = evt.data.info;
-		document.getElementById("info").innerHTML = info;
+		var elementInfo = document.getElementById("info");
+		elementInfo.innerHTML = info;
+		elementInfo.style.visibility = 'visible';
+		setTimeout(function(){ elementInfo.style.visibility = 'hidden'; }, 3000);
 	}
 });
 
